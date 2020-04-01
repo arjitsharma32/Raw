@@ -1,9 +1,12 @@
 <?php
+    include("config.php");
+
     if (isset($_GET["term"])){
         $term=$_GET["term"];
     }else{
         exit("Enter search term");
     }
+    $type = isset($_GET["type"])? $_GET["type"] : "sites";
 ?>
 <!doctype html>
 <html lang="en">

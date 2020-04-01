@@ -61,9 +61,30 @@
         $context = stream_context_create($opts);
     -------------------------------------------------
 
-    DOMDOCUMENT CLASs:
-    
+    DOMDOCUMENT CLASS :
+    Represents an entire HTML or XML document; serves as the root of the document tree.
+    Helps in parsing xml,html and creating xml
 
+        Loading HTML:
+        doc=new DomDocument();
+        
+        //convert html of a URL to string using file_get_contents
+        //loading HTML string 
+        $doc->loadHTML(file_get_contents(URL));
+        
+        //Usefull function to get HTML content
+        //Getting Elements
+        $doc->getElementsById("idName");
+        $doc->getElementsByTagName("a");
+        $doc->getElementsByTagName("img")->getAttribute('src');
+        
+        //Creating and adding elemnt in doc
+        $div = doc->createElement('div');
+        $div_clone = $div->cloneNode();
+        $doc->appendChild($div);
+        $doc->saveHTML();
+
+        
 
 
 */
@@ -88,5 +109,19 @@ class DomDocumentParser{
     public function getLinks(){
         return $this->doc->getElementsByTagName("a");
     }
+
+    public function getTitleTags(){
+        return $this->doc->getElementsByTagName("title");
+    }
+
+    public function getMetaTags(){
+        return $this->doc->getElementsByTagName("meta");
+    }
+
+    public function getImages(){
+        return $this->doc->getElementsByTagName("img");
+    }
+
+
 }
 ?>
