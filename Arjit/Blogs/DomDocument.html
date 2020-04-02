@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center">DOMDocument Class in PHP</h1>
+            <p>Represents an entire HTML or XML document.
+                It serves as the root of the document tree.
+                Helps in parsing and creating xml,html
+            </p>
+
+            <h3>Loading HTML</h3>
+            <p><span class="hl hl-br">file_get_contents(URL)</span>: Converts html content in URL to String. <br>
+                <span class="hl hl-br">loadHTML(file_get_contents(URL))</span>: Loading HTML string with DomDocument
+                object.
+            </p>
+            <pre class="line-numbers"><code class="language-php ">doc=new DomDocument();
+//convert html of a URL to string using file_get_contents
+//loading HTML string
+$doc->loadHTML(file_get_contents(URL));</code></pre>
+
+            <br>
+            <h3>Function to get HTML contents</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php">$doc->getElementsById("idName");
+
+//Gets all anchor tags inside Document
+$doc->getElementsByTagName("a");
+
+//Gets all src attributes in img in whole doc
+$doc->getElementsByTagName("img")->getAttribute('src');</code></pre>
+
+            <br>
+            <h3>Creating and Adding elements in HTML Doc</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php">$div = doc->createElement('div');//create a div
+$div_clone = $div->cloneNode();//Cloning div to div_clone
+$doc->appendChild($div);//Appending div to Document
+$doc->saveHTML();//Saves document</code></pre>
+
+            <br>
+            <h3>Traversing all entries of a element</h3>
+            <p>
+                <span class="hl hl-br">item()</span> : Gets node at certain index within DOMNodeList object. <br>
+                <span class="hl hl-br">nodeValue</span> : Gets value at that node.
+            </p>
+            <pre class="line-numbers"><code class="language-php">&lt;?php
+
+$doc = new DOMDocument;
+$doc->load('arjit.html');
+
+$items = $doc->getElementsByTagName('a');
+
+for ($i = 0; $i < $items->length; $i++) {
+    echo $items->item($i)->nodeValue . "\n";
+}
+/*
+foreach ($items as $item) {
+    echo $item->nodeValue . "\n";
+}
+*/
+
+?></code></pre>
+
+
+        </div>
+
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

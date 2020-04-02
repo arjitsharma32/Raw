@@ -1,5 +1,6 @@
 <?php
     include("config.php");
+    include("classes/siteResultsProvider.php");
 
     if (isset($_GET["term"])){
         $term=$_GET["term"];
@@ -32,6 +33,15 @@
                 <li><a href='<?php echo "search.php?term=$term&type=images"; ?>'>Images</a></li>
             </ul>
         </div>
-    
+        <div class="mainResultsSection">
+            <?php
+            $resultsProvider = new siteResultsProvider($con);
+            $numResults = $resultsProvider->getNumResults($term);
+            ?>
+            
+            <p class = "resultsCount">
+            <?php echo $numResults." results found " ?>
+            </p>
+        </div>
     </body>
 </html>

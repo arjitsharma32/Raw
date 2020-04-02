@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center"> File Handling And Streams</h1>
+
+            <span class="hl-br">Note : </span>
+            <ul>
+                <li>ftell($file) : Tells where file pointer is</li>
+                <li>When a file is too big ,u cant read entire file in memory in single go then u need to read it in
+                    chunks.</li>
+            </ul>
+
+            <h3>Streams : </h3>
+            <p>A stream is a resource object which exhibits streamable behavior.
+                That is, it can be read from or written to in a linear fashion. <br>
+                <span class="hl">We use Streams to provide data on demand.( <i class="hl-fg">Providing data in
+                        chunks</i> )</span>
+            </p>
+
+            <h3>Opening a file</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php ">$file = fopen(__DIR__ . '/empList.txt','r+') or die("Unable to open");
+        //r+ : read-write mode and others like,w,r,a</code></pre>
+
+            <br>
+            <h3>Reading a file</h3>
+            <br>
+
+            <h5 class="text-center">Read 1 line</h5>
+            <br>
+            <pre class="line-numbers"><code class="language-php ">$employee = fgets($file);
+echo $employee;</code></pre>
+            <br>
+
+            <h5 class="text-center">Read whole file</h5>
+            <br>
+            <pre class="line-numbers"><code class="language-php ">//Reading in 1 call(won't work for big files)
+$fileData = fread($file,filesize($file));
+
+//Reading line by line
+while(!feof($file)){
+    echo fgets($file) . "&lt;br>";
+}</code></pre>
+
+            <br>
+            <h5 class="text-center">Read file to string(using <span class="hl-br">file_get_contents()</span> )</h5>
+            <br>
+            <pre class="line-numbers"><code class="language-php ">$text = file_get_contents("files/my_file.txt");
+echo $text;</code></pre>
+            <br>
+
+            <br>
+            <h3>Writing to a file</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php ">$newFile = fopen("newFile.txt", "w") or die("Unable to open file");
+$line = "Hello World, Add this line to file";
+fwrite($newFile,$line);</code></pre>
+
+            <br>
+            <h3>Deleting a File</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php ">unlink("file.txt");</code></pre>
+
+
+            <br>
+            <h3>Stream Wrappers</h3>
+            <p>Tells the stream how to handle specific protocols.
+                ex-https,ftp,zip</p>
+
+            <br>
+            <h3>Stream Context</h3>
+            <p>Set of parameters or wrapper specific options <br>
+                <span class="hl-br">stream_context_create()</span> : Creates and returns a stream context with any
+                <i>options</i>
+                supplied in options preset.
+            </p>
+            <pre class="line-numbers"><code class="language-php ">&lt;?php
+$opts = array(
+'http'=>array(
+'method'=>"GET",
+'header'=>"Accept-language: en\r\n" .
+"Cookie: foo=bar\r\n"
+)
+);
+
+$context = stream_context_create($opts); ?></code></pre>
+
+
+
+        </div>
+
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

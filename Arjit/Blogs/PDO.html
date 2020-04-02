@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <a href="https://www.youtube.com/watch?v=kEW6f7Pilc4"><span class="hl-by">Referrence</span></a>
+            <h1 class="display-4  text-center">PHP - PDO</h1>
+            <p>PDO stands for PHP Data Objects (Object Oriented). It is a PHP Extension to access database.Unlike mysqli
+                it works with multiple databases.
+                There are 3 main Classes are : <br>
+                <span class="hl">&rArr; PDO</span> - Connection between PHP and DB <br>
+                <span class="hl">&rArr; PDOStatement</span> - Prepared Statement <br>
+                <span class="hl">&rArr; PDOException</span> - Represent error raised by PDO <br>
+
+            </p>
+            <h3>PDO Basic</h3>
+            <p>We create PDO Object,execute a query and fetch result,either in associated array
+                format(<i>FETCH_ASSOC</i>) or object format(<i>FETCH_OBJ</i> ) <br>
+                <span class="hl">Line 11:</span> - Creating PDO Object ( &dollar;pdo ) <br>
+                <span class="hl">Line 14:</span> - Executing Query using &dollar;pdo&RightArrow;query( sql )<br>
+                <span class="hl">Line 17:</span> - Fetching result using <span class="hl-br">fetch()</span> method<br>
+                <span class="hl">Line 18:</span> - As FETCH_ASSOC class is used so we get the query result in associated
+                array format
+                and that is why column <i>'title'</i> is accessed using array referrencing.<br>
+
+            </p>
+            <pre class="line-numbers"><code class="language-php ">&lt;?php
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "test";
+
+//Set DSN = Data Source Name,describes connection to database
+$dsn = "mysql:hosts=".$host.";dbname=".$dbname;
+
+//Creating PDO Instance
+$pdo = new PDO($dsn, $user, $password);
+
+//PDO Query
+$stmt = $pdo->query("SELECT * FROM posts");
+
+//Fetching Rows in Associated array format
+while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    echo $row['title'] . "<br>";
+}
+?></code></pre>
+
+            <br>
+            <h3>Fetching rows in Object Format</h3>
+            <p><span class="hl-br">PDO::FETCH_OBJ</span> can be used to get query result in form of objects then in
+                order to access columns we will
+                use <span class="hl-bg">&rightarrow;</span> symbol
+            </p>
+            <pre class="line-numbers"><code class="language-php ">while($row = $stmt->fetch(PDO::FETCH_OBJ)){
+    echo $row->title . "<br>";
+}</code></pre>
+
+            <br>
+
+            <h3>Set FETCH_OBJ as default</h3>
+            <p>After specifying the default format of result we wont need to provide argument in fetch method.</p>
+            <pre class="line-numbers"><code class="language-php ">$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_OBJ)
+while($row = $stmt->fetch())//Now this will work
+{--}</code></pre>
+
+            <br>
+            <h3>Prepared Statements</h3>
+            <p>
+                Why use ?<br>
+                <ul>
+                    <li>Helps write parametric queries,i.e same query can be used again and again.</li>
+                    <li>Faster</li>
+                    <li>Prevents SQL injections</li>
+                </ul>
+            </p>
+
+            <h5 class="text-center">&rArr; Using indexed parameters</h5> <br>
+            <pre class="line-numbers"><code class="language-php ">$author = "Arjit";
+$sql = "SELECT * FROM posts WHERE author = ?";
+$stmt = $pdo->prepare($sql);
+
+//array of variables is sent in execute
+$stmt->execute([$author]);
+
+//fetchall fetches all result, while fetch gives 1
+$posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+foreach($posts as $post){
+    echo $post->title. "<br>";
+}</code></pre>
+
+            <br>
+
+            <h5 class="text-center">&rArr; Using named parameters</h5> <br>
+            <pre class="line-numbers"><code class="language-php ">$author = "Arjit";
+$is_published = true;
+
+$sql = "SELECT * FROM posts WHERE author = :author and is_published = :is_published";
+$stmt = $pdo->prepare($sql);
+
+$stmt->execute(['author' => $author,"is_published"=>$is_published]);
+
+$posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+foreach($posts as $post){
+    echo $post->title. "<br>";
+}</code></pre>
+
+
+            <hr>
+            <br>
+            <h1 class="display-5 text-center">Basic Operations in PDO</h1>
+            <h3>Counting no. of rows</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php">$author = "Arjit";
+$stmt = $pdo->prepare("SELECT * FROM posts WHERE author = ?");
+$stmt->execute([$author]);
+$count = $stmt->rowCount();
+echo $count;</code></pre>
+
+
+
+            <br>
+
+            <h3>Inserting</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php">$title = "Post 4";
+$body = "This is a post 4";
+$author = "Singham";
+
+$sql = "INSERT INTO posts(title,body,author) VALUES(?,?,?)";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$title,$body,$author]);
+echo "Post Added";</code></pre>
+
+            <br>
+            <h3>Updating</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php">$title = "Post 4 : Updated";
+$id = "4";
+
+$sql = "UPDATE posts SET title = ? WHERE id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$title,$id]);
+echo "Post Updated";</code></pre>
+
+            <br>
+            <h3>Deleting</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-php">$id = "4";
+
+$sql = "DELETE FROM posts WHERE id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$id]);
+echo "Post Deleted";</code></pre>
+
+
+            <br>
+            <h3>Searching</h3>
+            <p></p>
+            <pre class="line-numbers"><code class="language-php">$search = "%title%";
+$sql = "SELECT * FROM posts WHERE title LIKE ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$search]);
+$posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+foreach($posts as $post){
+    echo $post->title. "<br>";
+}</code></pre>
+
+
+
+        </div>
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

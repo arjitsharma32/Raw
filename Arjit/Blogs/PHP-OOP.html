@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center">Object Oriented PHP</h1>
+            <h3>Class Creation</h3>
+            <p>Below is given basic class implementation in PHP
+                <br>
+                <span class="hl">Line 8</span>: Constructor Defined with default values set to null
+                <br>
+                <span class="hl">Line 16</span>: Destructor is called at end of the script
+                <br>
+                <span class="hl">Line 30</span>: Object's properties can be accessed using -> keyword
+
+            </p>
+
+            <pre class="line-numbers"><code class="language-php ">class Student {
+
+public $name;
+public $roll;
+public $class;
+
+//Constructor
+function __construct($name=null,$roll=null,$class=null){
+    //default set to null so that no error occurs even if user doesn't set all values
+    $this->name =$name;
+    $this->roll =$roll;
+    $this->class =$class;
+}
+
+//Destructor
+function __destruct(){
+echo "Called upon script ending";}
+
+//Method
+public function sayHello(){
+    return "Hello World!!";
+    }
+}
+
+//Instantiating Objects
+$arjit=new Student("Arjit Sharma",14,"CSE-A");
+
+
+//Getting & Setting Object's Properties
+echo $arjit->roll; //Property does'nt start with $ sign
+$arjit->roll="CSE-B";
+echo $arjit->sayHello();
+</code></pre>
+
+            <h3>Constants And Static</h3>
+            <p>Though both are shared by all objects(<i>are class variable</i>) <br>
+                A constant(<span class="hl-br">const</span>) cannot be changed while a static variable can.
+            </p>
+
+            <pre class="line-numbers"><code class="language-php ">class Student {
+const a="5";
+static $b="5";
+}
+echo Student::a;//5
+echo Student::$b;//5
+Student::a=10;//Error
+Student::$b=10;//Changed to 10
+</code></pre>
+
+            <br>
+            <h3>Inheritance</h3>
+            <p> <span class="hl-br">extends</span> keyword is used. <br>
+                <span class="hl">Line 13:</span>Child constructor used to call parent constructor.
+            </p>
+
+            <pre class="line-numbers"><code class="language-php ">class Student{
+public $name;
+
+public function __construct($name){
+    $this->name=$name;
+    }
+}
+class CollegeStudent extends Student{
+public $degree;
+
+public function __construct($name,$degree){
+    // $this->name=$name; --->this would have worked here
+    Student::__construct($name);//Calling parent constructor
+    $this->degree=$degree;
+    }
+}
+
+$student1= new CollegeStudent("Arjit Sharma","B.Tech");
+echo "Name : ".$student1->name."<br> Course : ".$student1->degree;
+</code></pre>
+
+
+
+            <br>
+            <h3>Traits</h3>
+            <p> As inheritance only allows to inherit from 1 class,
+                What if we wanted a particular function in all classes.
+                Use <span class="hl-br">trait</span>. <br>
+                <span class="hl">Traits are used to declare methods that can be used in multiple classes.</span>
+            </p>
+
+            <pre class="line-numbers"><code class="language-php ">trait msg{
+public function msg_function(){
+    echo "Hello World!";
+    }
+}
+class Welcome{
+use msg;
+}
+$ob=new Welcome();
+$ob->msg_function();</code></pre>
+
+
+
+            <br>
+            <h3>Method Overriding</h3>
+            <p> If we don't want a method to be overridden, prefix with <span class="hl-br">final</span> keyword.
+                (Ex: <i>final public function sayHello()</i>)
+            </p>
+
+            <pre class="line-numbers"><code class="language-php ">class A{
+public function sayHello(){ //Prefix with final keyword so that cant be overridden
+    return "Hello from A";
+    }
+}
+
+class B extends A{
+public function sayHello(){
+    return "Hello from B";
+    }
+} </code></pre>
+
+            <br>
+            <h3>Abstract Class</h3>
+            <p> <span class="hl-br">absract </span> keyword is used. A class can only inherit from 1 class.
+            </p>
+
+            <pre class="line-numbers"><code class="language-php ">abstract class human{
+
+public function walk(){//Can have non-abstract mehods
+    return "Human is walking";
+    }
+abstract public function sayHello();//Abstract method declare
+}
+
+class Indian extends human{
+
+public function sayHello(){//Indian define there implementation of saying hello
+    return "Namaste";
+    }
+}</code></pre>
+
+
+            <br>
+            <h3>Interfaces</h3>
+            <p> <span class="hl-br">implements</span> keyword is used. A class can implement multiple interfaces.
+            </p>
+
+            <pre class="line-numbers"><code class="language-php ">interface A { 
+function A_method();
+}
+
+interface B { 
+function B_method();
+}
+
+class C implements A,B {
+
+function A_method(){
+    return "A's Method";
+}
+
+function B_method(){
+    return "B's Method";
+    } 
+}</code></pre>
+
+
+        </div>
+        <!--normal-content closed-->
+    </div>
+    <!--container-fluid closed-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

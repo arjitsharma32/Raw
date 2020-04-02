@@ -22,12 +22,12 @@ $pdo = new PDO($dsn, $user, $password);//$conn=new mysqli("localhost","root","",
 //PDO Query
 $stmt = $pdo->query("SELECT * FROM posts");//$stmt = $conn->query("SELECT * from posts")
 
-/*
+
 //Fetching Rows in Associated array format
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){//while($row = $result->fetch_assoc())
     echo $row['title'] . "<br>";//echo $row['title'];
 }
-*/
+
 
 /*
 //Fetching Rows in Object format
