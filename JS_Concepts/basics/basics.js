@@ -68,7 +68,7 @@ Primitive Data Types:
 Referrence Data Types:
     Arrays : const names = ['Arjit','Adam']
     Object Literals : const person = { name:"Arjit", age:19}
-    Functions : 
+    Functions : function myFunc(){}
     Dates : const today = new Date();
 
 -------------
@@ -326,7 +326,7 @@ list.removeChild(lis[3]);
 
 
 
-EVENT LISTENERS
+                                EVENT LISTENERS
 
 document.querySelector('.clear-task').addEventListener('click',
 function(e){
@@ -351,13 +351,81 @@ function onClick(e){
     val = e.target.id;
     val = e.target.classList;
 
-    //Eve
-    e.target.innerText("Hello")
+    //Change Text in button on click
+    e.target.innerText("Hello");
+
+    //Getting Timestamp on clicking
+    val = e.timeStamp;
+
+    //Getting Event Type
+    val = e.type;
+
+    //Coords event relative to window
+    val = e.clientY;
+    val = e.clientX;
+
+    //Coords event relative to element
+    val = e.offsetY;
+    val = e.offsetX;
+
 
     console.log("button clicked");
 }
 
 
+                            DIFFERENT MOUSE EVENTS
+
+btn = document.querySelector('.btn');
+
+btn.addEventListener('click',runEvent);
+function runEvent(e){
+    console.log(`Event Type : ${e.type}`);
+}
+
+dblclick
+mousedown
+mouseup
+mouseenter
+mouseleave
+mouseover : Fires everytime we go inside other elements within parent(for which mouseover is set)
+            Ex: We go inside card the inside a list then inside button in li...it fires everytime though only defined for card
+mouseout :
+mousemove
+
+
+                            DIFFERENT KEYBOARD EVENTS
+
+const form = document.querySelector('form');
+const taskinput = document.getElementById('task');
+
+form.addEventListener("submit", formEvent);
+
+function formEvent(e){
+    console.log(`EVENT TYPE: ${e.type}`);
+    
+    //log value entered in input field of form
+    console.log(taskInput.value);
+
+
+    //e.preventDefault();
+}
+
+taskInput.addEventListener("keydown", inputEvent);
+
+function inputEvent(e){
+    console.log(e.target.value);//Every letter we type output to console
+}
+
+keyup
+keypress - General keypress
+focus - Focus on input field
+blur - focus outside input field
+cut - Anything is cut from input field
+paste - Anything pasted to input field
+input - general input field...anything we do with input fires this event
+
+
+EVENT BUBBLING / DELEGATION
 
 
 
@@ -368,6 +436,22 @@ function onClick(e){
 
 
 
+
+
+LOCAL AND SESSION STORAGE
+
+//Set Local Storage 
+localStorage.setItem('name','John');
+
+//Set Session Storage
+sessionStorage.setItem('name','Beth');
+
+//Deleting
+localStorage.removeItem('name');
+localStorage.clear()
+
+//Getting from Storage
+const name = localStorage.getItem('name');
 
 
 
