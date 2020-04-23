@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center">Javascript Basics</h1>
+            <br>
+            <h3>Logging to console</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-javascript ">console.log("Hello World");
+console.error("Yellow");
+console.warn("Warning Mssg");
+//Gives time taken between execution
+console.time("note time");
+    console.log("heck yea");
+    console.log("heck yea");
+    console.log("heck yea");
+    console.log("heck yea");
+    console.log("heck yea");
+console.timeEnd("note time");</code></pre>
+
+            <br>
+            <h3>Variables and Constants</h3>
+            <p>
+                <span class="hl hl-fr">var</span> and <span class="hl hl-fr">let</span>(newer way) keyword are used to
+                initialize varibales. <br>
+                <span class="hl hl-fr">const</span> keyword is used to assign constant. Constants cant be changed.
+            </p>
+            <pre class="line-numbers"><code class="language-javascript ">//Initializing variables
+var name = "arjit";
+let age = 18;
+
+//Constants
+const a = 10;
+a = 20; //Cannot do ,Error
+
+//Cannot change object, but can change property of objects
+const person = {
+    name: "John",
+    age: 20
+}
+person.name = "Arjit"; //Possible
+
+//Not Possbile reassigning const object
+person = {
+    name: "XYZ",
+    age:45
+}</code></pre>
+
+
+
+            <br>
+            <h3>Data Types</h3>
+            <p>
+                JS is a dynamically typed language. <br>
+                <span class="hl hl-fr">typeof</span> keyword is used to know data type of variable.
+            </p>
+            <br>
+            <span class="hl hl-bg">Primitive Data Types:</span>
+            <pre class="line-numbers"><code class="language-javascript ">String : const name = "John Doe";
+Number : const age = 18;
+Boolean : const isValid = true;
+Null : const a = null;
+//typeof null gives object,a bug in language
+Undefined : let test;
+Symbols : const sym = Symbol();    </code></pre>
+
+
+            <span class="hl hl-bg">Referrence Data Types:</span>
+            <pre class="line-numbers"><code class="language-javascript ">Arrays : const names = ['Arjit','Adam']
+Object Literals : const person = { name:"Arjit", age:19}
+Functions : function myFunc(){}
+Dates : const today = new Date(); </code></pre>
+
+
+
+
+
+            <br>
+            <h3>Type Conversion</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-javascript ">let a;
+//Number to String:
+a = String(89);
+a = (90).toString();
+
+//Date to String
+a = String(new Date());
+
+//String to Number
+a = Number('5');
+a = Number("Hello");//NaN = Not a Number
+a = parseInt('100.30');//100
+a = parseFloat('100.30');
+//toFixed specifies decimal places
+console.log(a.toFixed(2));//100.30 </code></pre>
+
+
+
+            <br>
+            <h3>Functions</h3>
+            <p>
+                <span class="hl hl-fr">function</span> Keyword is used to create a function. <br>
+                <span class="hl hl-br">Function Exprn</span><span class="hl">(Line 6)</span>: We can deal with function
+                as a value. Assign it to variables. <br>
+                <span class="hl hl-br">Callback Funtion</span><span class="hl">(Line 11)</span>: We can pass function as
+                argument and can call back later if needed.
+            </p>
+            <pre class="line-numbers"><code class="language-javascript ">function name(p1, p2, p3) {
+    //Code
+}
+
+//Function Expression
+let yo = function(){
+    //Code
+};
+
+//Callback Functions
+function yes(){ alert("Yes"); }
+function no(){ alert("No"); }
+
+function ask(question,yes,no){
+    //func yes() and no() will be passed in parameter
+    if(confirm(ques))
+        yes();
+    else
+        no();
+}
+
+ask("Do you agree Sire?",yes,no);</code></pre>
+
+
+
+
+            <br>
+            <h3>Strings</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-javascript ">let a = "10";//double quotes 
+let b = '10';//single quotes
+let name = new String("Arjit Sharma");//Strings can be objects 
+
+//Finding Length
+let len = name.length;
+
+//Finding position of substring in a String 
+let pos1 = name.indexOf("Sharma");//1st occurence
+let posLast = name.lastIndexOf("a");//last occurence of 'a' 
+
+//Slicing
+let str = "Arjit Sharma is my name.";
+let name = str.slice(0,5);//1st parameter inclusive,2nd exclusive
+
+//Replacing
+let name = str.replace("Arjit","Astitva");
+
+//To uppercase 
+let text1 = "Hello World!";     
+let text2 = text1.toUpperCase();
+
+//Accessing characthers in a string
+str.charAt(0);
+str.cahrCodeAt(0);//returns unicode charachter at specified position
+str[0];
+
+//Converting String to Arrays
+str.split(" ");//Splits string on basis of whitespace
+let text = "HELLO";
+text.split("");// Splits in Charachters</code></pre>
+
+
+
+
+
+
+
+
+            <br>
+            <h3>Arrays</h3>
+            <br>
+            <pre class="line-numbers"><code class="language-javascript ">let names = [
+  "Arjit",
+  "Ananay",
+  "Samay"
+];
+
+let names = new Array("Arjit", "Ananay", "Samay");
+
+//Length of Array            
+let x = names.length; 
+
+//Sorting Array
+let y = names.sort();
+
+//Looping Array using forEach method
+names.forEach(function (val,index){
+    console.log(index,val);
+});
+
+//Adding and Removing Element
+names.push("Monty");//Adds to last position
+names.pop();//Removes last element
+
+names.shift();//Removes 1st element
+names.unshift("NewItem");//Adds to 1st position and shifts rest
+
+//Arrays to Strings
+names.toString();//Arjit,Anany,Samay,Monty
+names.join(" # ");//Arjit#Ananay#Samay#Monty</code></pre>
+
+
+
+
+
+        </div>
+
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>
