@@ -455,4 +455,424 @@ const name = localStorage.getItem('name');
 
 
 
+
 */
+OOPS
+
+
+MAKING A CLASS
+
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+
+    this.canVote = function(){
+        if (age>18) 
+            return true 
+        else
+            return false; 
+    }
+}
+
+const arjit = new Person ('Arjit',12);
+
+
+
+
+PROTOTYPES
+
+//Object.prototype
+//Person.prototype
+
+
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+}
+//Because canVote is Common , move it to protoype
+Person.prototype.canVote = function(){
+        if (age>18) 
+            return true 
+        else
+            return false; 
+    }
+//Protoype function to change age
+Person.prototype.changeAge = function(age){
+        this.age = age; 
+    }
+
+
+
+const john = new Person('John',10);
+console.log(john.canVote());//returns false
+
+john.changeAge(19);
+console.log(john.canVote());//returns true
+
+//Using Object Property
+console.log(john.hasOwnProperty('name'));//true
+console.log(john.hasOwnProperty('canVote'));//false
+
+
+INHERITANCE
+
+
+function Person(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+Person.prototype.greeting = function(){
+    return `Hello ${this.firstName} ${this.lastName}`;
+}
+
+
+//Customer Constructor
+function Customer(firstName, lastName, phone , membership){
+    Person.call(this,firstName,lastName);
+
+    this.phone = phone;
+    this.membership = membership;
+}
+
+//Inherit Person protoype methods
+Customer.protoype = Object.create(Person.prototype);
+Customer.protoype.constructor = Customer;
+
+
+
+const customer1 = new Customer('Tanmay','Bisht','9056202014','Premium');
+
+//Overriding greeting prototype method of Person
+Customer.prototype.greeting = function(){
+    return `Hello customer ${firstName} ${lastName} Welcome to company `
+}
+
+
+
+OBJECT.CREATE
+
+
+const personPrototype = {
+    greeting: function(){
+        return `Hello ${this.firstName} ${this.lastName}`;
+    },
+    getsMarried: function(newLastName){
+        this.lastName = newLastName;
+    }
+}
+
+const mary = Object.create(personPrototype);
+mary.firstName ='Mary';
+mary.lastName = 'Poppins';
+mary.age = 26;
+
+mary.getsMarried('Marzzi');
+console.log(mary.greeting);
+
+const arjit = Object.create(personPrototype,{
+    firstName: {value: 'Arjit'},
+    lastName : {value: 'Sharma'},
+    age: {value: 19}
+});
+
+console.log(arjit.greeting);
+
+
+
+
+ES6
+
+class Person{
+    constructor(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+
+    greeting(){
+        return `Hello there ${this.firstName} ${this.lastName}`;
+    }
+
+    //Using Static methods
+    static walk(){
+        return 'Person is Walking';
+    }    
+
+}
+
+const arjit = new Person('Arjit','Sharma');
+
+console.log(Person.walk());
+
+
+
+
+
+INHERITANCE IN ES6
+
+class Person{
+    constructor(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    greeting(){
+        return `Hello there ${this.firstName} ${this.lastName}`;
+    }
+}
+
+class Customer extends Person{
+    constructor(firstName, lastName, phone, membership){
+        super(firstName,lastName);
+        this.phone = phone;
+        this.membership = membership;
+    }
+}
+
+const John = new Customer('John','Doe','970259022','Premium');
+
+console.log(john.greeting());
+
+
+
+
+
+ARROW FUNCTIONS 
+
+
+// const sayHello = function(){
+//     console.log('Hello');
+// }
+
+const sayHello = () => console.log('Hello');
+
+//To return a string no need to use return keyword.One Line Returns
+const sayHello =() => 'Hello';
+console.log(sayHello());
+
+//To return object literal wrap object in parenthesis,so that it doesnt consider it as function body
+const sayHello = () => ({msg: 'Hello'});
+console.log(sayHello());
+
+
+
+
+
+
+
+
+
+ASYNCHRONOUS JAVASCRIPT
+
+synchronous code - Works in an order. 1st thing then 2nd 
+while in asynchronous , while doing 1st do 2nd. Then wont be waiting for 1st to finish up
+
+Most Async code comes from an API or library
+Ways to work with async code
+    Callback
+    Promises
+    Async/Await
+
+
+
+AJAX
+asynchronous JS and XML
+Set of web technologies used to send and recieve data from server asynchronously without reloading webpage
+
+Client --(JS call)-> AJAX Engine --(XmlHttpRequest)-> SERVER --(XML/JSON)-> AJAX Engine --(HTML Response)-> Client
+
+XHR Object - Within JS enviroment, its methods transfer data 
+Can be used with other protocols other than HTTP and Can work with data other than XML(JSON,plain Text)
+
+
+//readyState Values: Tell State of server
+//0 : request not initialized
+//1 : Server connection established
+//2 : request recieved
+//3 : processing request
+//4 : request finished and response is ready
+
+
+
+//loading data from data.txt file
+function loadData(){
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET','data.txt',true);//3rd parameter states call data asynchronously
+    
+    //Used for spinners or loaders
+    //While data is being fetched do something
+    xhr.onprogress = function(){
+        console.log(xhr.readyState);
+    }
+
+    xhr.onload = function(){
+        //console.log(xhr.readyState);//returns 4
+        if(this.status === 200)
+            console.log(this.responseText);
+    }
+
+    xhr.onerror = function(){
+        console.log("Error Loading data");
+    }
+
+    xhr.send();
+
+    //Earlier we used onreadystatechange
+    // xhr.onreadystatechange = function(){
+    //     if(this.status === 200 && this.readyState === 4){
+    //         console.log(this.responseText);
+    //     }
+    // }    
+}
+
+
+LOADING JSON DATA USING XHR
+
+function loadData(){
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET','data.json',true);
+
+    xhr.onload = function(){
+        //console.log(xhr.readyState);//returns 4
+        if(this.status == 200)
+            const customers = JSON.parse(this.responseText);
+            //Using JSON.parse so we can use it as an object
+
+            customers.forEach(function(customer){
+                console.log(customer.id);
+                console.log(customer.name);
+            });
+    }
+
+    xhr.send();
+
+}
+
+
+API - Application Programming Interface
+A structured request and response
+
+REST api - Representational State transfer
+Architectural style for designing networked appln and relies on stateless,client-server protocol(mostly HTTP)
+Can be used by any prog language
+Treats server objects as resources that can be created and destroyed
+
+
+HTTP Requests -
+GET : Retrieve data from specified resource.
+POST : Submit data to be processed to a specified resource.
+PUT : Update a specified resource
+DELETE : Delete a specified resource
+
+API Endpoints -
+URL that we acces to do certain thing
+//ENDPOINT-->GET https://someurl.com/api/users
+
+
+CALLBACK -
+
+function giveTest(callback){
+    setTimout(function(){
+        console.log("Test Given");
+        callback();
+    },2000);
+}
+
+function getMarks(){
+    setTimout(function(){
+        console.log("Got Marks");
+    },1000);
+}
+
+//giveTest takes 2 sec , getMarks takes 1 sec
+//If we would have used synchronous code then we would have got marks before giving test
+//callback waits for giving test then executes callback func getMarks 
+
+giveTest(getMarks);
+//Output - 
+//  Test Given
+//  Got Marks
+
+
+
+
+
+
+PROMISES - Object that may produce value in the future
+
+//To get response from promise we use .then()
+function giveTest(){
+    return new Promise(function(resolve,reject){
+    setTimout(function(){
+        console.log("Test Given");
+        resolve();
+    },2000);    
+    });
+}
+
+function getMarks(){
+    setTimout(function(){
+        console.log("Got Marks");
+    },1000);
+}
+
+giveTest().then(getMarks);
+
+
+
+
+
+ERROR DEALING IN PROMISES
+
+
+function giveTest(){
+    return new Promise(function(resolve,reject){
+    setTimout(function(){
+        console.log("Test Given");
+
+        //lets suppose there is error
+        const error = true;
+        if(error){
+            reject("Something Went Wrong");
+        }else{
+            resolve();
+        }
+    },2000);    
+    });
+}
+
+function getMarks(){
+    setTimout(function(){
+        console.log("Got Marks");
+    },1000);
+}
+
+giveTest().then(getMarks).catch(function(err){
+    console.log(err);
+});
+
+
+
+
+
+
+FETCH API - Alternate to AJAX and XHR
+
+
+GETTING TEXT DATA USING FETCH
+//fetch returns promises
+function getText(){
+    fetch('test.txt')
+    .then(function(res){
+        return res.text();
+    })
+    .then(function(data){
+        console.log(data);
+    })
+    .catch(function(err){
+        console.log(err);
+    })
+}
+
