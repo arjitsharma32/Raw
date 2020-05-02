@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center"> Object Oriented JS(in ES5)</h1>
+
+			<br>
+			<h3>MAKING A CLASS</h3>
+           <br>
+<pre class="line-numbers"><code class="language-php ">function Person(name, age){
+this.name = name;
+this.age = age;
+
+this.canVote = function(){
+if (age>18) 
+return true 
+else
+return false; 
+}
+}
+
+const arjit = new Person ('Arjit',12);</code></pre>
+
+
+			<br>
+			<h3>PROTOTYPES</h3>
+           <br>
+<pre class="line-numbers"><code class="language-php ">//Object.prototype
+//Person.prototype
+
+
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+}
+//Because canVote is Common , move it to protoype
+Person.prototype.canVote = function(){
+        if (age>18) 
+            return true 
+        else
+            return false; 
+    }
+//Protoype function to change age
+Person.prototype.changeAge = function(age){
+        this.age = age; 
+    }
+
+
+
+const john = new Person('John',10);
+console.log(john.canVote());//returns false
+
+john.changeAge(19);
+console.log(john.canVote());//returns true
+
+//Using Object Property
+console.log(john.hasOwnProperty('name'));//true
+console.log(john.hasOwnProperty('canVote'));//false</code></pre>
+
+
+
+			<br>
+			<h3>INHERITANCE</h3>
+           <br>
+<pre class="line-numbers"><code class="language-php ">function Person(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+Person.prototype.greeting = function(){
+    return `Hello ${this.firstName} ${this.lastName}`;
+}
+
+
+//Customer Constructor
+function Customer(firstName, lastName, phone , membership){
+    Person.call(this,firstName,lastName);
+
+    this.phone = phone;
+    this.membership = membership;
+}
+
+//Inherit Person protoype methods
+Customer.protoype = Object.create(Person.prototype);
+Customer.protoype.constructor = Customer;
+
+
+
+const customer1 = new Customer('Tanmay','Bisht','9056202014','Premium');
+
+//Overriding greeting prototype method of Person
+Customer.prototype.greeting = function(){
+    return `Hello customer ${firstName} ${lastName} Welcome to company `
+}</code></pre>
+
+
+
+
+
+			<br>
+			<h3>OBJECT.CREATE</h3>
+           	<p>
+Object.create() methord is used to create a new object with the specified prototype object and properties
+</p>
+<pre class="line-numbers"><code class="language-php ">const personPrototype = {
+    greeting: function(){
+        return `Hello ${this.firstName} ${this.lastName}`;
+    },
+    getsMarried: function(newLastName){
+        this.lastName = newLastName;
+    }
+}
+
+const mary = Object.create(personPrototype);
+mary.firstName ='Mary';
+mary.lastName = 'Poppins';
+mary.age = 26;
+
+mary.getsMarried('Marzzi');
+console.log(mary.greeting);
+
+const arjit = Object.create(personPrototype,{
+    firstName: {value: 'Arjit'},
+    lastName : {value: 'Sharma'},
+    age: {value: 19}
+});
+
+console.log(arjit.greeting);</code></pre>
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

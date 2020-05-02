@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center"> Asynchronous JavaScript</h1>
+
+            <p>synchronous code - Works in an order. 1st thing then 2nd 
+while in asynchronous , while doing 1st do 2nd. Then wont be waiting for 1st to finish up
+
+Most Async code comes from an API or library <br>
+Ways to work with async code <br>
+    <span class="hl hl-fr">Callback</span>  <br>
+    <span class="hl hl-fr">Promises</span> <br>
+    <span class="hl hl-fr">Async/Await</span> <br>
+
+    <br>
+
+    <span class="hl hl-br">AJAX</span> : asynchronous JS and XML <br>
+Set of web technologies used to send and recieve data from server asynchronously without reloading webpage
+
+<br>
+
+Client -- <i>(JS call)</i> -> AJAX Engine --<i>(XmlHttpRequest)</i>-> SERVER --<i>(XML/JSON)</i>-> AJAX Engine --<i>(HTML Response)</i>-> Client
+
+</p>
+			<br>
+
+			<h3>XHR - Intro</h3>
+			<p> XHR Object - Within JS enviroment, its methods transfer data <br> 
+Can be used with other protocols other than HTTP and Can work with data other than XML(JSON,plain Text) <br>
+			</p>
+
+            <pre class="line-numbers"><code class="language-javascript ">
+//readyState Values: Tell State of server
+//0 : request not initialized
+//1 : Server connection established
+//2 : request recieved
+//3 : processing request
+//4 : request finished and response is ready
+//loading data from data.txt file
+
+function loadData(){
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET','data.txt',true);//3rd parameter states call data asynchronously
+    
+    //Used for spinners or loaders
+    //While data is being fetched do something
+    xhr.onprogress = function(){
+        console.log(xhr.readyState);
+    }
+
+    xhr.onload = function(){
+        //console.log(xhr.readyState);//returns 4
+        if(this.status === 200)
+            console.log(this.responseText);
+    }
+
+    xhr.onerror = function(){
+        console.log("Error Loading data");
+    }
+
+    xhr.send();
+
+    //Earlier we used onreadystatechange
+    // xhr.onreadystatechange = function(){
+    //     if(this.status === 200 && this.readyState === 4){
+    //         console.log(this.responseText);
+    //     }
+    // }    
+}</code></pre>
+		
+		<br>
+		<h3>LOADING JSON DATA USING XHR</h3>
+		<br>
+<pre class="line-numbers"><code class="language-javascript ">
+function loadData(){
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET','data.json',true);
+
+    xhr.onload = function(){
+        //console.log(xhr.readyState);//returns 4
+        if(this.status == 200)
+            const customers = JSON.parse(this.responseText);
+            //Using JSON.parse so we can use it as an object
+
+            customers.forEach(function(customer){
+                console.log(customer.id);
+                console.log(customer.name);
+            });
+    }
+
+    xhr.send();
+
+}</code></pre>
+
+
+
+		<br>
+		<h3>API basics</h3>
+		<p>
+<span class="hl">API</span> - Application Programming Interface <br>
+A structured request and response
+
+<br> <br>
+
+<span class="hl">REST api</span> - Representational State transfer <br>
+Architectural style for designing networked appln and relies on stateless,client-server protocol(mostly HTTP) <br>
+Can be used by any prog language <br>
+Treats server objects as resources that can be created and destroyed <br>
+
+<br>
+
+<span class="hl">API Endpoints</span>
+URL that we acces to do certain thing <br>
+//ENDPOINT-->GET https://someurl.com/api/users <br>
+
+<br>
+
+<span class="hl hl-br">HTTP Requests</span> <br>
+<span class="hl">GET</span> : Retrieve data from specified resource. <br>
+<span class="hl">POST</span> : Submit data to be processed to a specified resource. <br>
+<span class="hl">PUT</span>: Update a specified resource <br>
+<span class="hl">DELETE</span>: Delete a specified resource <br>
+
+			
+		</p>
+		<br>
+
+
+
+
+
+		<h3>Callbacks</h3>
+		<p>The containing function is responsible for executing the callback function when the time comes
+</p>
+<pre class="line-numbers"><code class="language-javascript ">
+
+function giveTest(callback){
+    setTimout(function(){
+        console.log("Test Given");
+        callback();
+    },2000);
+}
+
+function getMarks(){
+    setTimout(function(){
+        console.log("Got Marks");
+    },1000);
+}
+
+//giveTest takes 2 sec , getMarks takes 1 sec
+//If we would have used synchronous code then we would have got marks before giving test
+//callback waits for giving test then executes callback func getMarks 
+
+giveTest(getMarks);
+//Output - 
+//  Test Given
+//  Got Marks
+</code></pre>
+
+
+		<br>
+		<h3>Promises</h3>
+		<p>Object that may produce value in the future
+</p>
+<pre class="line-numbers"><code class="language-javascript ">
+//To get response from promise we use .then()
+function giveTest(){
+    return new Promise(function(resolve,reject){
+    setTimout(function(){
+        console.log("Test Given");
+        resolve();
+    },2000);    
+    });
+}
+
+function getMarks(){
+    setTimout(function(){
+        console.log("Got Marks");
+    },1000);
+}
+
+giveTest().then(getMarks);
+</code></pre>
+
+
+		<br>
+		<h3>ERROR DEALING IN PROMISES
+</h3>
+		<br>
+<pre class="line-numbers"><code class="language-javascript ">
+function giveTest(){
+    return new Promise(function(resolve,reject){
+    setTimout(function(){
+        console.log("Test Given");
+
+        //lets suppose there is error
+        const error = true;
+        if(error){
+            reject("Something Went Wrong");
+        }else{
+            resolve();
+        }
+    },2000);    
+    });
+}
+
+function getMarks(){
+    setTimout(function(){
+        console.log("Got Marks");
+    },1000);
+}
+
+giveTest().then(getMarks).catch(function(err){
+    console.log(err);
+});</code></pre>
+
+
+		<br>
+		<h3>Fetch API</h3>
+		<p><span class="hl hl-fr">fetch</span>  and <span class="hl hl-fr">xhr</span> does data transfer without reloading pages <br> <br>
+
+<span class="hl hl-fr">AJAX callback/promises</span> are used to support asynchronous behaviour  <br> <br>
+
+<span class="hl">
+FETCH API - Alternate to XHR. Used to transfer data from or to a URL endpoint . Built upon promises just how XHR on callbacks. <br>
+JavaScript can send network requests to the server and load new information whenever it’s needed.</span>
+</p>
+		
+		<br>
+		<h3>Getting Text Data Using Fetch</h3>
+		<br>
+		<pre class="line-numbers"><code class="language-javascript ">//fetch returns promises
+/*
+function getText(){
+    fetch('test.txt')
+    .then(function(res){
+        return res.text();
+    })
+    .then(function(data){
+        console.log(dat );
+    })
+    .catch(function(err){
+        console.log(err);
+    })
+}
+*/
+//fetch returns promise
+function getText(){
+    fetch('test.txt')
+    .then(res => res.text())
+    .then(data => console.log(data) 
+    .catch(err => console.log(err));
+}</code></pre>
+
+
+
+<br>
+		<h3>Async/Await</h3>
+		<br>
+<pre class="line-numbers"><code class="language-javascript ">async function myFunc(){
+
+const promise = new Promise((resolve,reject)=>{
+setTimout(() => resolve('Hello'), 1000);
+});
+
+const res = await promise;//Waits until promise is resolved
+return res;
+
+}
+
+myFunc().then(res=>console.log(res));</code></pre>
+
+
+
+
+		<br>	
+		<h3>Async/Await Error Handling</h3>
+		<br>
+<pre class="line-numbers"><code class="language-javascript ">async function myFunc(){
+    
+    const promise = new Promise((resolve,reject)=>{
+        setTimout(() => resolve('Hello'), 1000);
+    });
+
+    const error = true;
+
+    if(!error){
+    const res = await promise;//Waits until promise is resolved
+    return res;
+    }else{
+        await Promise.reject(new Error('Something went Wrong'));
+    }
+
+
+}
+
+myFunc()
+.then(res=>console.log(res))
+.catch(err=>console.log(err));
+</code></pre>
+
+		<br>	
+		<h3>Async/Await with Fetch</h3>
+		<br>
+<pre class="line-numbers"><code class="language-javascript ">async function getUsers(){
+    //await response of fetch call
+    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    //Only proceed once promise returned by fetch is resolved
+    const data = await response.json();
+    //Only Proceed when second promise is resolved
+    return data;
+}
+
+getUsers().then(users => console.log(users));</code></pre>
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

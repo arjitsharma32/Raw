@@ -74,11 +74,12 @@ val = document.scripts;</code></pre>
 
             <h3>Selecting Elements</h3>
             <p>
-
+                <span class="hl hl-fr">getElementById , getElementByClassName , getElementByTag </span> are used to select elements from the DOM.
             </p>
 
             <pre class="line-numbers"><code class="language-javascript ">document.getElementById("task-title");
-document.getElementById("task-title").className;//Gives class Name of element with id = task-title
+//Gives class Name of element with id = task-title
+document.getElementById("task-title").className;
 //Can also store in a variable
 const tasktitle = document.getElementById("task-title");
 
@@ -88,16 +89,18 @@ items[0].style.color = "red";
 const li = document.getElementsByTagName("li");
 console.log(li[0]);</code></pre>
 
-
+            
+            <br>
             <h3>Query Selector</h3>
             <p>
-
+                It is a general function to select class, id or tag.
             </p>
 
             <pre class="line-numbers"><code class="language-javascript ">document.querySelector("#task-title");//Gets id 
 document.querySelector(".card-title");//Gets class
 document.querySelector("h3");//Gets 1st h3 in doc
-document.querySelector("ul li").style.color = "blue";//Gets all list items in ul
+//Gets all list items in ul
+document.querySelector("ul li").style.color = "blue";
 
 //Get all ul with class name "collection-item"
 const listItems = document.querySelector("ul").getElementsByClassName("collection-item");
@@ -106,12 +109,10 @@ const listItems = document.querySelector("ul").getElementsByClassName("collectio
 const item = document.querySelectorAll('ul.collection li.collection-item');
 //ul with class of collection and li in ul with class of collection-item selected</code></pre>
 
-
+            
+            <br>
             <h3>Converting HTML collection to Array</h3>
-            <p>
-
-            </p>
-
+            <br>
             <pre class="line-numbers"><code class="language-javascript ">let li = document.getElementByTagName("li");
 li = Array.from(li);
 li.reverse();//Works
@@ -119,11 +120,10 @@ li.forEach(function(li){
     console.log(li);
 });</code></pre>
 
-
+            
+            <br>
             <h3>Changing Styles</h3>
-            <p>
-
-            </p>
+           <br>
 
             <pre class="line-numbers"><code class="language-javascript ">document.getElementById("task-title").style.background = "#333";
 document.getElementById("task-title").style.color = "#fff";
@@ -134,22 +134,17 @@ document.getElementById("task-title").style.dispaly = "none";</code></pre>
 
 
 
-
+            <br>
             <h3>Changing Content</h3>
-            <p>
-
-            </p>
-
+           <br>
             <pre class="line-numbers"><code class="language-javascript ">document.getElementById("task-title").textContent = "New text";
 document.getElementById("task-title").innerText = "My Tasks";
 document.getElementById("task-title").innerHTML = "&lt;span>Hello</span>";</code></pre>
 
 
-
+            <br>
             <h3>Classes and Attributes</h3>
-            <p>
-
-            </p>
+            <br>
 
             <pre class="line-numbers"><code class="language-javascript ">const firstLi = document.querySelector("li:first-child");
 const link = firstLi.children[0];
@@ -169,11 +164,10 @@ x = link.getAttribute("href");
 x = link.setAttribute("href","http://google.com");
 link.removeAttribute("href");</code></pre>
 
-
+            
+            <br>
             <h3>Traversing the DOM</h3>
-            <p>
-
-            </p>
+            <br>
 
             <pre class="line-numbers"><code class="language-javascript ">let x;
 const list = document.querySelector("ul.collection");
@@ -226,13 +220,14 @@ x = listItem.nextElementSibling.nextElementSibling;
 x = listItem.previousSibling;
 x = listItem.previousElementSibling.previousElementSibling;</code></pre>
 
-
+            
+            <br>
             <h3>Creating and Adding Elements</h3>
             <p>
-                Creating - createElement
-                Adding Element to DOM - 
-                    appendChild :
-                    insertBefore : card.insertBefore(newdiv,card.firstChild); 
+                Creating - <span class="hl hl-fr">createElement</span> <br>
+                Adding Element to DOM - <br>
+                    <span class="hl hl-fr">appendChild</span> : li.appendChild(const) <br>
+                    <span class="hl hl-fr">insertBefore</span> : card.insertBefore(newdiv,card.firstChild) <br> 
             </p>
 
             <pre class="line-numbers"><code class="language-javascript ">&lt;li class="collection-item">Hello World &lt;a>&lt;i class = "fa fa-remove">&lt;/a>&lt;/li>
@@ -256,11 +251,9 @@ li.appendChild(document.createTextNode("hello World"));//Inserting Text node ins
 document.querySelector("ul.collection").appendChild(li);</code></pre>
 
 
-
+            <br>
             <h3>Removing / Replacing Elements</h3>
-            <p>
-
-            </p>
+            <br>
 
             <pre class="line-numbers"><code class="language-javascript ">const newHeading = document.createElement("h2");
 newHeading.id="task-title";
@@ -280,11 +273,9 @@ lis[0].remove();
 list.removeChild(lis[3]);</code></pre>
 
 
-
+            <br>
             <h3>Event Listeners</h3>
-            <p>
-
-            </p>
+            <br>
 
             <pre class="line-numbers"><code class="language-javascript ">document.querySelector('.clear-task').addEventListener('click',
 function(e){
@@ -328,22 +319,20 @@ function onClick(e){
 }</code></pre>
 
 
-
+            <br>
             <h3>Different Mouse Events</h3>
-            <p>
-                dblclick
-                mousedown
-                mouseup
-                mouseenter
-                mouseleave
-                mouseover : Fires everytime we go inside other elements within parent(for which mouseover is set)
-                Ex: We go inside card the inside a list then inside button in li...it fires everytime though only
-                defined for card
-                mouseout :
-                mousemove
-            </p>
+            <br>
 
-            <pre class="line-numbers"><code class="language-javascript ">btn = document.querySelector('.btn');
+            <pre class="line-numbers"><code class="language-javascript ">/*dblclick
+mousedown
+mouseup
+mouseenter
+mouseleave
+mouseover
+mouseout 
+mousemove
+*/
+btn = document.querySelector('.btn');
 
 btn.addEventListener('click',runEvent);
 function runEvent(e){
@@ -352,20 +341,21 @@ function runEvent(e){
 
 
 
-
+            <br>
             <h3>Different Keyboard Events</h3>
-            <p>
-                keyup
-                keypress - General keypress
-                focus - Focus on input field
-                blur - focus outside input field
-                cut - Anything is cut from input field
-                paste - Anything pasted to input field
-                input - general input field...anything we do with input fires this event
+            <br>
 
-            </p>
+            <pre class="line-numbers"><code class="language-javascript ">/* keyup
+keypress - General keypress
+focus - Focus on input field
+blur - focus outside input field
+cut - Anything is cut from input field
+paste - Anything pasted to input field
+input - general input field...anything we do with input fires this event
+*/
 
-            <pre class="line-numbers"><code class="language-javascript ">const form = document.querySelector('form');
+const form = document.querySelector('form');
+
 const taskinput = document.getElementById('task');
 
 form.addEventListener("submit", formEvent);
@@ -390,11 +380,9 @@ function inputEvent(e){
 
 
 
-
+            <br>
             <h3>Local and Session Storage</h3>
-            <p>
-
-            </p>
+            <br>
 
             <pre class="line-numbers"><code class="language-javascript ">//Set Local Storage 
 localStorage.setItem('name','John');
@@ -407,7 +395,22 @@ localStorage.removeItem('name');
 localStorage.clear()
 
 //Getting from Storage
-const name = localStorage.getItem('name');</code></pre>
+const name = localStorage.getItem('name');
+
+//Example From TaskList app:
+function storeTaskInLocalStorage(task) {
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else { //Parse into JSON from string.
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.push(task);
+    
+    //Convert from JSON to string as local storage only stores Strings 
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}</code></pre>
 
 
 

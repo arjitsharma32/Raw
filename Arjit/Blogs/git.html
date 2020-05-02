@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center"> GIT BASICS</h1>
+			
+
+			<h3>Creating Repository</h3>
+            <p>Go inside project folder and use <span class="hl hl-fr">git init</span> which initializes empty Git repository or puts this project on git</p>
+
+            <pre class="line-numbers"><code class="language-git "> git init
+</code></pre>
+
+			<br>
+			<h3>Creating Snapshot <span class="hl"> & other cool things</span></h3> 
+            <p>
+            	<span class="hl hl-fr">git add . </span>: Puts all files on launchpad <br>
+            	<span class="hl hl-fr">git commit</span>: Puts 	all these files on launchpad to git repo <br>
+    			<span class="hl hl-fr">git log</span>: Gives log about commits <br>
+    			<span class="hl hl-fr">git status</span>: If we change a file in this repo and run this command it tells which files are modified <br>
+            	<span class="hl hl-fr">git diff file1 file2</span>: Shows difference between 2 files<br>
+            	
+            	        	
+	
+
+            </p>
+
+            <pre class="line-numbers"><code class="language-git ">git add . //Include current directory and all tree
+git commit -m "First commit with all files"
+</code></pre>
+
+			
+			<br>
+			<h3>Time Travel in Git</h3>
+            <p> We can roll to previous version of project by looking at logs and going to the state we want to go. <br>
+			Suppose our project is facebook, when we do git log it gives a special commit sequence,Author name and Date wit mssg. Example <br>
+			<span class="hl">facebook> git log</span> <br> <br>
+			<span class="hl hl-fy">commit c7ac56625aa724c0392934848d93fj40</span> <br>
+			Author: Arjit  <br>
+			Date: Thu Dec 5 13:54:38 2020 +0100 <br>
+			 &nbsp; FIXED BUG 
+			<br> <br>
+			<span class="hl hl-fy">commit e5d1a75569300fjfm23030kf3030</span> <br>
+			Author: Arjit <br>
+			Date: Thu Dec 5 13:50:00 2020 +0100 <br>
+			&nbsp; First commit with all files
+
+            </p>
+
+            <pre class="line-numbers"><code class="language-git "> git checkout e5d1a755
+</code></pre>
+
+			<br>
+			<h3>Branching and Merging</h3>
+            <p>We can create seperate branch of our project at some point of time For eg: If after few commits we want Premium version of app ,so we create a branch.
+
+			<br>
+
+			If we merge 2 branches by moving to Premium branch and using <span class="hl">git mrege master</span> than history of premium branch contains commits of premium as well as master while history of master contains its history only.
+            </p>
+
+            <pre class="line-numbers"><code class="language-c ">git branch premium
+git checkout premium//Switches to premium
+git checkout master//Switches to master
+
+
+//Merging
+//Move to premium branch and type
+git merge master
+</code></pre>
+
+			<br>
+			<h3>Open Source Workflow</h3>
+            <p>
+            	<span class="hl hl-fr">Fork Reop</span>: We get a copy of repo on cloud i.e,it is ours <br>
+				
+
+            	<span class="hl hl-fr">Clone Repo</span>: We clone repo to local machine to work on it<br>
+
+
+            	<span class="hl hl-fr">Commit and Push Changes to Fork</span>: We added changes to Fork repo <br>
+				
+            	<span class="hl hl-fr">Send Pull Request</span>: Ask maintainer of project to collect changes or new features  and hopefully they <span class="hl hl-fr">Pull Changes to orginal repo</span><br>
+
+            </p>
+
+           
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

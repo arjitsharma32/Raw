@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Arjit-Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <script src="https://use.fontawesome.com/97935cb42c.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!---------- Header ---------->
+        <div class="header d-flex">
+            <div class="site-icon">
+                <img src="../images/arjit.png" alt="site-icon" width="70px">
+            </div>
+            <div class="m-0 p-0">
+                <h1>Arjit Sharma</h2>
+                    <nav class="nav">
+                        <a class="nav-link " href="../index.html">Home</a>
+                        <a class="nav-link " href="blog-index.html">Blog</a>
+                        <a class="nav-link " href="../about.html">About</a>
+                    </nav>
+            </div>
+        </div>
+        <br>
+        <!--------Header--------------->
+    </div>
+
+    <!---------Content---------->
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="normal-content">
+            <h1 class="display-4  text-center"> JavaScript - ES6</h1>
+
+			<br>
+			<h3>MAKING A CLASS</h3>
+           <br>
+<pre class="line-numbers"><code class="language-php ">class Person{
+constructor(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+greeting(){
+    return `Hello there ${this.firstName} ${this.lastName}`;
+}
+
+//Using Static methods
+static walk(){
+    return 'Person is Walking';
+	}    
+}
+
+const arjit = new Person('Arjit','Sharma');
+
+console.log(Person.walk());
+</code></pre>
+
+
+			<br>
+			<h3>INHERITANCE IN ES6</h3>
+           <br>
+<pre class="line-numbers"><code class="language-php ">
+class Person{
+    constructor(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    greeting(){
+        return `Hello there ${this.firstName} ${this.lastName}`;
+    }
+}
+
+class Customer extends Person{
+    constructor(firstName, lastName, phone, membership){
+        super(firstName,lastName);
+        this.phone = phone;
+        this.membership = membership;
+    }
+}
+
+const John = new Customer('John','Doe','970259022','Premium');
+
+console.log(john.greeting());
+</code></pre>
+
+
+
+			<br>
+			<h3>ARROW FUNCTIONS </h3>
+           <br>
+<pre class="line-numbers"><code class="language-php ">// const sayHello = function(){
+//     console.log('Hello');
+// }
+
+const sayHello = () => console.log('Hello');
+
+//To return a string no need to use return keyword.One Line Returns
+const sayHello =() => 'Hello';
+console.log(sayHello());
+
+//To return object literal wrap object in parenthesis,so that it doesnt consider it as function body
+const sayHello = () => ({msg: 'Hello'});
+console.log(sayHello());
+
+//Single parameters passed in function dont need parenthesis
+const sayHello = (name) => console.log(`Hello ${name}`);
+const sayHello = name => console.log(`Hello ${name}`);
+
+//1 or more parenthesis
+const sayHello = (Fname,Lname) => console.log(`Hello ${Fname} ${Lname}`);
+
+
+//Finding length of names in array using arrow func
+const users = ['Nathan','John','Williams'];
+//const nameLen = users.map(function(name){
+//    return name.length;
+//})
+const nameLen = users.map(name =>name.length);
+</code></pre>
+
+
+
+
+
+			<br>
+			<h3>OBJECT.CREATE</h3>
+           	<p>
+Object.create() methord is used to create a new object with the specified prototype object and properties
+</p>
+<pre class="line-numbers"><code class="language-php ">const personPrototype = {
+    greeting: function(){
+        return `Hello ${this.firstName} ${this.lastName}`;
+    },
+    getsMarried: function(newLastName){
+        this.lastName = newLastName;
+    }
+}
+
+const mary = Object.create(personPrototype);
+mary.firstName ='Mary';
+mary.lastName = 'Poppins';
+mary.age = 26;
+
+mary.getsMarried('Marzzi');
+console.log(mary.greeting);
+
+const arjit = Object.create(personPrototype,{
+    firstName: {value: 'Arjit'},
+    lastName : {value: 'Sharma'},
+    age: {value: 19}
+});
+
+console.log(arjit.greeting);</code></pre>
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <!--container-fluid-->
+
+    <!-------Conent------------->
+
+
+
+
+    <!-----------Footer--------->
+    <div class="container">
+        <hr>
+        <div class="footer d-flex justify-content-center">
+            <p class="text-muted"> Copyright &copy; Arjit Sharma 2020 </p>
+        </div>
+        <!-----------Footer------------->
+
+
+    </div>
+    <!--container closed-->
+
+
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

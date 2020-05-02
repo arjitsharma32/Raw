@@ -13,13 +13,17 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/97935cb42c.js"></script>
-   
-
+    
 </head>
 
 <body>
-    <div class="container">
-
+    <div id="particles-js" style="
+    position: absolute;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    z-index: -1;
+"></div>
+     <div class="container " >
 
         <!---------- Header ---------->
         <header>
@@ -89,7 +93,7 @@
                 <br>
 
 
-                <h3>Featured Projects</h3>
+                <h3 id="featuredProjects">Featured Projects</h3>
                 <br>
                 <div class="card-deck text-dark">
                     <div class="card ">
@@ -108,10 +112,10 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img class="card-img-top" src="images/spider.gif" alt="Card image cap">
+                        <img class="card-img-top" src="images/storyline.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title">Dumb Crawler</h4>
-                            <p class="card-text">A basic web crawler using PHP
+                            <h4 class="card-title">Story-Line</h4>
+                            <p class="card-text">Social Media for Writers
                             </p>
                         </div>
                     </div>
@@ -122,10 +126,10 @@
                 <div class="card-deck text-dark">
                     
                     <div class="card">
-                        <img class="card-img-top" src="images/weather.gif" alt="Card image cap">
+                        <img class="card-img-top" src="images/simplyHTTP.gif" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title">Weather App</h4>
-                            <p class="card-text">Android app using OpenWeatherMap api
+                            <h4 class="card-title">SimplyHTTP</h4>
+                            <p class="card-text">JS library to make HTTP requests simpler
                             </p>
                         </div>
                     </div>
@@ -148,6 +152,13 @@
 
                 </div>
 
+                <br>
+                <h3 id="featuredProjects">Know More</h3>
+                <br>
+                <p>Want to know more about me., head onto <a href="about.html"><span class="hl hl-fpink lg-2">About page</span></a></p>
+                
+
+
                 
             </div>
 
@@ -166,6 +177,8 @@
     </div>
     <!--container closed-->
 
+<script src="particles.js"></script>
+<script src="app.js"></script>
 </body>
 
 </html>

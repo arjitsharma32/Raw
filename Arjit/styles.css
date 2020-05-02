@@ -37,9 +37,38 @@
 
     .hl 
     .hl-bg , .hl-by , .hl-br
-    .hl-fg , .hl-fy , .hl-fr
+    .hl-fg , .hl-fy , .hl-fr, .hl-fblue, .hl-fpink, .hl-fbrown
+
+
+    .lg-1 > .lg-2 > .lg-3
+
+
+    .modPre ->Change color in pre to white
     
 */
+
+#miniProj{
+background: #313233;
+
+}
+
+.modPre{
+    color: #ffffff;
+}
+
+.lg-4{
+    font-size: 1.2em;
+}
+.lg-3{
+    font-size: 1.6em;
+}
+.lg-2{
+    font-size: 2.1em;
+}
+.lg-1{
+    font-size: 2.5em;
+}
+
 
 
 body{
@@ -88,7 +117,6 @@ a:hover{
 }
 
 .container{
-    margin-top: 50px;
     width: 50%;
 }
 
@@ -128,13 +156,34 @@ a:hover{
     color: #ffffff;
 }
 .hl-fg{
-    color: #2bbc8a;
+    color: #50d890;
 }
 .hl-fy{
     color: yellow;
 }
 .hl-fr{
     color: #fc2929;
+}
+.hl-fblue{
+    color: #40bad5;
+}
+.hl-fpink{
+    color: #fe346e;
+}
+.hl-fbrown{
+    color: #8f4426;
+}
+.hl-bblue{
+    background-color: #40bad5;
+    color: #ffffff;
+}
+.hl-bpink{
+    background-color: #fe346e;
+    color: #ffffff;
+}
+.hl-bbrown{
+    background-color: #8f4426;
+    color: #ffffff;
 }
 
 
@@ -172,10 +221,20 @@ a:hover{
     p{
         font-size: 14px;
     }
+
+    .lg-3{
+            font-size: 1.2em;
+        }
+    
+    .lg-2{
+            font-size: 1.5em;
+        }
+    
+    .lg-1{
+            font-size: 2.0em;
+        }
     
   }
-  
-
 
 
 
