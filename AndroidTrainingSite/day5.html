@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Day 5</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <style>
+    .sidenav{
+      height: 750vh;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .not{
+      background-color: rgb(247, 247, 247);
+    }
+    code{
+        color: bisque;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid bg-dark text-light">
+  <h1 class="display-4">Android-Notes++</h1>  
+  </div>
+  
+<div class="container-fluid text-center bg-dark text-light">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Multiple Screens (aka Activity)</h1>
+      <hr>
+      <h3>Intents</h3><br>
+        <p>
+            Intent is the bridge to move from 1 activity to another activity. <br>
+            2 types of intent are- <br>
+            Explicit Intent <br> 
+            Implicit Intent <br>
+             </p>
+             <img src="img/intentMainImage.jpg" alt="" style="width: 400px">
+            
+             <h3>To move from 1 activity other upon button click</h3>
+                <img src="img/intent.jpg" alt="" style="width: 200px">
+                <img src="img/intentsec.jpg" alt="" style="width: 200px">
+
+     <p>
+        1. To make new Activity <br>
+         Right click on app->New->Activity->Empty Activity <br>
+                    
+         Now we will have xml and java file for MainActivity
+          and also for new Activity we created.</p>
+              <p>In MainActivity.java</p>
+      <a href="img/intent1.JPG"><img src="img/intent1.JPG" alt="" style="width: 600px"></a> <br>
+           <hr>
+
+      <h3>2.Sending Data From 1 activity to another</h3><br>
+      <p><i>Here we send Name = Rahul and Class = CSE A which appears as Toast below in another activity</i></p>
+      <img src="img/intent.jpg" alt="" style="width: 200px">
+      <img src="img/intentData.jpg" alt="" style="width: 200px">
+        <p>If we want to send data from one activity to other we use intent.putExtra(key,value)
+                <br>
+            Here key is the thing by which we can access value .(Ex - key is Name , Value is Rahul)</p>
+            <p>In MainActivity.java</p>
+            <a href="img/intent2.JPG"><img src="img/intent1.JPG" alt="" style="width: 600px"></a> <br>
+            <p>In secondActivity.java</p>
+            <a href="img/intent22.JPG"><img src="img/intent22.JPG" alt="" style="width: 600px"></a> <br>
+       <hr>
+       <h3>3. Implicit Intent: Playing others apps from our app</h3><br>
+       <img src="img/intentimplicit.jpg" alt="" style="width: 200px">
+       <p><i>Note : Here we select every button and in its properties set onClick to <b>yo</b> <br>
+    This is easier from our usual setOnClickListener(this)</i></p>
+    <img src="img/intent3.JPG" alt="">
+             <p>In MainActivity.java</p>
+             <a href="img/intent3a.JPG"><img src="img/intent3a.JPG" alt="" style="width: 600px"></a> <br>
+             <a href="img/intent3b.JPG"><img src="img/intent3b.JPG" alt="" style="width: 500px"></a> <br>
+<hr>
+
+<h3>4. Splash Screen</h3><br>
+<p>It is a screen that appears as introductory page of our app and then disappears</p>
+<p><i>This is the splash screen which will disappear after some time</i></p>
+<img src="img/splash.jpg" alt="" style="width: 200px">
+<p><i>This is the main screen of the app</i></p>
+<img src="img/splash2.jpg" alt="" style="width: 200px">
+      <p>In MainActivity.java</p>
+      <a href="img/abhinajaao.jpg"><img src="img/abhinajaao.jpg" alt="" style="width: 600px"></a> <br>
+<hr>
+
+      </div>
+
+          <div class="col-sm-2 sidenav">
+     
+    </div>
+  
+</div>
+</body>
+</html>

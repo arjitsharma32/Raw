@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Day 6</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <style>
+    .sidenav{
+      height: 1300vh;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .not{
+      background-color: rgb(247, 247, 247);
+    }
+    code{
+        color: bisque;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid bg-dark text-light">
+  <h1 class="display-4">Android-Notes++</h1>  
+  </div>
+  
+<div class="container-fluid text-center bg-dark text-light">    
+  <div class="row content">
+    
+    <div class="col-sm-2 sidenav">
+
+    </div>
+
+
+
+    <div class="col-sm-8 text-left"> 
+      <h1>Layouts using XML</h1>
+      <hr>
+      <h3>Basics</h3>
+      <br>
+      <p>1. Alignment according to parent Layout 
+        <br>  
+        Here Blue Box represents Parent Layout while green box is the widget we want to adjust on Screen
+        <br><br>
+      <img src="img/head1.png" alt="" style="width: 600px"></p> 
+        <br>
+      <p>2.The Match Parent and Wrap Content Value of Width and Height
+        <br>  
+            Wrap-Content only takes space in which content is present while Match Parent takes whatever width or height parent was having.   
+            <br><br> 
+      <img src="img/head2.png" alt="" style="width: 600px"></p> 
+      <br> 
+      <p>3.Aligning Views(widgets) with respect to each other
+            <br>  
+            <p>We can align widgets according to 
+                <ul>
+                    <li>Aligning Edges
+                        <ul>
+                            <li>android:Layout_alignTop="@id/x" - Replace x with that widget's ID ,whose edge we want to be similar to present widget</li>
+                            <li>android:Layout_alignBottom="@id/x" </li>
+                            <li>android:Layout_alignLeft="@id/x" </li>
+                            <li>android:Layout_alignRight="@id/x" </li>
+                        </ul>
+                   </li>
+                    <li>Direction from each other
+                        <ul>
+                            <li>android:Layout_below="@id/x" - Replace x with that widget's ID ,whose below we want present widget to be.</li>
+                            <li>android:Layout_above="@id/x" </li>
+                            <li>android:Layout_toRightOf="@id/x" </li>
+                            <li>android:Layout_toLeftOf="@id/x" </li>
+                        </ul>
+
+                    </li>
+                   
+                </ul>
+            </p>
+            <img src="img/head3.png" alt="" style="width: 600px">
+        
+<hr>
+     <h3>Programs</h3>
+     <br>
+     <h3>1. Linear Layout </h3> 
+     <br>
+        <img src="img/day7(image1).JPG" alt="" style="width: 200px"> <br>
+        <p>activity_main.xml file</p>
+        <a href="img/day7(code1).JPG"><img src="img/day7(code1).JPG" alt="" style="width: 600px"></a> 
+        <a href="img/day7(code11).JPG"><img src="img/day7(code11).JPG" alt="" style="width: 600px"></a>
+        <a href="img/day7(code111).JPG"><img src="img/day7(code111).JPG" alt="" style="width: 600px"></a>
+   <br>
+        <hr>
+
+     <h3>2.Relative Layout</h3>
+     <br>
+        <img src="img/day7(image2).JPG" alt="" style="width: 200px">
+        <p>activity_main.xml file</p>
+        <a href="img/day7(code2).JPG"><img src="img/day7(code2).JPG" alt="" style="width: 800px"></a> 
+        <a href="img/day7(code22).JPG"><img src="img/day7(code22).JPG" alt="" style="width: 800px"></a>     
+    <br>
+        <hr>
+
+     <h3>3.Complex Layout</h3>
+     <br>
+       <img src="img/day7(image3).JPG" alt="" style="width: 200px">
+       <p>To make above complex layout use the following hierarchy</p>
+       <img src="img/day7(image3-layout).JPG" alt="" style="width: 200px ">
+       <p>activity_main.xml file</p>
+        <a href="img/day7(code3).JPG"><img src="img/day7(code3).JPG" alt="" style="width: 600px"></a> 
+        <a href="img/day7(code33).JPG"><img src="img/day7(code33).JPG" alt="" style="width: 600px"></a> 
+    <br>
+        <hr>
+    </div>
+    
+    
+    <div class="col-sm-2 sidenav">
+    
+    </div>
+  
+</div>
+</body>
+</html>

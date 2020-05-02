@@ -1,0 +1,90 @@
+h1{
+    text-align: center;
+    font-family:Permanent Marker;
+    margin: 0 auto;
+    font-size: 200px;
+    color:rgb(135,1994,110)
+    
+}
+body
+{
+    background: url("../images/barbell-brawny-gym-949127.jpg")
+        no-repeat center center fixed;
+    background-size: cover;
+        }
+.Quote{
+    font-size: 100px;
+    font-family: fantasy;
+    color:cornflowerblue;
+    border-radius: 10px;
+    border-color: gray;
+    text-align: center;
+    opacity: 0.8;
+}
+ul{
+    margin: 0;
+    
+    overflow: hidden;
+    list-style-type: none;
+}
+li{
+    float: right;
+}
+li a
+{
+    display: block ;
+    text-align: center;
+    font-family:cursive;
+    font-size: 60px;
+    color: white;
+    padding: 30px;
+    text-decoration: none;
+}
+li{
+    
+}
+a:link{
+    color:white;
+    animation-delay: 5s;
+}
+a:hover {
+    color: rgb(135,1994,110);
+}
+.content
+{
+    margin: 50px 30px;
+    font-family:cursive;
+    font-size: 50px;
+    color: snow;
+}
+th{
+    font-family: monospace;
+    font-size: 70px;
+    color: beige;
+    text-align: center;
+}
+td{
+    font-size: 40px;
+    color: white;
+    font-family: cursive;
+    text-align: center;
+}
+#SignUP
+{
+    text-align: center;
+    font-size: 60px;
+}
+video
+{
+    margin-left: 150px
+}
+h2{
+    text-align: center;
+    font-family: Permanent Marker;
+color:rgb(135,1994,110);
+
+}
+#yo
+{
+    margin-left: 425px;
+}

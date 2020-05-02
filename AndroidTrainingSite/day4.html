@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Day 4</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <style>
+    .sidenav{
+      height: 400vh;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .not{
+      background-color: rgb(247, 247, 247);
+    }
+    code{
+        color: bisque;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid bg-dark text-light">
+  <h1 class="display-4">Android-Notes++</h1>  
+  </div>
+  
+<div class="container-fluid text-center bg-dark text-light">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Working With Audio</h1>
+      <hr>
+      <h3>1. Playing Music </h3><br>
+        <p>Left click on res and create a new directory with name raw.Insert a song from your PC into raw folder <br>
+             Drag and Drop togglebutton from components. </p>
+
+      <p>Solution Java File</p>
+      <a href="img/audio.JPG"><img src="img/audio.JPG " alt="" style="width: 600px"></a>
+      <p> <b> Understanding Code </b>  </p>
+      <p>
+Every widget has particular listener associated to it. <br>
+MediaPlayer mp stores the song we want to play by using MediaPlayer.Create(...) <br>
+We can take many actions like mp.play(),mp.pause(),mp.stop(). 
+We use setOnCheckedChangedListener(...) to take action when toggle button changes state(on or off)</p>
+      <hr>
+      <h3>2. Controls in audio(audio control and music seek)</h3>
+      <img src="img/seek.png" alt="" style="width: 200px">
+      <p>Solution Java File</p>
+      <a href="img/seek1.JPG"><img src="img/seek1.JPG " alt="" style="width: 700px;display: block"></a>
+      <a href="img/seek2.JPG"><img src="img/seek2.JPG " alt="" style="width: 700px"></a>
+      <a href="img/seek3.JPG"><img src="img/seek3.JPG " alt="" style="width: 700px;display: block"></a>
+     <hr> 
+      <h3>3. Music Player</h3><br>
+        <p>Required UI - Listview,5 buttons(play,pause,stop,next song,previous song) ,2 seekbars( one for seeking song other for increasing volume)<br>
+             Drap and Drop buttons and change background to images of play ...etc  </p>
+             <img src="img/mp.png" alt="" style="width: 200px;">
+
+      <p>Solution Java File</p>
+      <a href="img/musicplayer1.JPG"><img src="img/musicplayer1.JPG " alt="" style="width: 600px;display: block"></a>
+      <a href="img/musicplayer2.JPG"><img src="img/musicplayer2.JPG " alt="" style="width: 600px"></a>
+      <a href="img/musicplayer3.JPG"><img src="img/musicplayer3.JPG " alt="" style="width: 600px;display: block"></a>
+      <a href="img/musicplayer4.JPG"><img src="img/musicplayer4.JPG " alt="" style="width: 600px"></a>
+      
+       <hr>
+      </div>
+
+          <div class="col-sm-2 sidenav">
+     
+    </div>
+  
+</div>
+</body>
+</html>

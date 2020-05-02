@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Day 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <style>
+    .sidenav{
+      height: 500vh;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .not{
+      background-color: rgb(247, 247, 247);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid bg-dark text-light">
+  <h1 class="display-4">Android-Notes++</h1>  
+  </div>
+  
+<div class="container-fluid text-center bg-dark text-light">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Introduction to Android</h1>
+      <hr>
+      <h3>Resources</h3>
+      <p><a href="https://drive.google.com/file/d/1aBEpDS3n1MdoJ6txv--nmQl-_3iI1IaB/view?usp=sharing">Here are Notes for today.</a></p>
+      <hr>
+      <h2>Overview</h2>
+
+      <ul>
+        <li><p>We will cover some basic part of theory</p></li>
+        <li><p>Hello World Project.</p>
+        <img src="img/hello.png" alt="" style="width: 200px;"></li>
+    </ul>
+      <hr>
+      <h3>What is Android</h3>
+      <p>Android is a mobile operating system. <br>
+         Based on a modified version of the Linux kernel and other open source software. <br>
+        Primarily for touchscreen mobile devices such as smartphones and tablets. 
+      </p>
+    <hr>
+    <h3>Android Architecture</h3>
+   <img src="https://static.javatpoint.com/images/androidimages/softwarestack.jpg" alt="">
+  <hr>
+    <h3>Why is it secure? </h3>
+      <p> 1. Android OS is multiuser Linux system in which each app is defferent user.
+            <br> 
+          2. By Default ,each app gets a unique linux user ID.
+           <br> 
+          3. Each process has its own virtual machine so an app's code run in isolation from other apps.</p>
+    <hr>
+    <h3>Android App Components </h3>
+    <p>Building Blocks of app. <br>
+            Each component is entry point of app.</p>
+    <p>4 types of activities are:</p>
+    <ol><li> <h4>Activities</h4> <p>Single Screen with user interface. <br>
+            Ex - Email app with activity that shows list of emails.</p> </li>
+        <li> <h4>Services</h4> <p>Component running background without need to interactwith user. <br>
+                    Ex - Music playing in background while you chat on whatsapp.</p> </li>
+        <li> <h4>Broadcast Receivers</h4> <p>Simply respond to broadcast messages from other applications or from the system itself. <br>
+                Ex - Applications can also initiate broadcasts to let other applications know that some data has been downloaded to the device and is available for them to use</p> </li>
+        <li> <h4>Content Providers</h4> <p>Share data between applications. <br>
+                Ex- Android System provides content provider that manages user's contact information.</p> </li>                                
+    </ol>
+  <hr>
+  <h3>Manifest File -  </h3>
+      <p>Declares components ( And we already know that components are building blocks of android app) </p>
+      <p>Before android system can start app component , system must know component exists by reading app's manifest file </p>
+      <br>
+      <p>Other Functions</p>
+      <br>
+      <ol>
+          <li><p>Defines user permissions</p> </li>
+          <li><p>Declares min level API level required by application</p> </li>
+          <li><p>Declares Hardware and Software features required by application</p> </li>
+      </ol>
+    <hr>
+    <h3>Project Structure in Android-</h3>
+    <p>There are 2 main files in android. <br> 1.activity_main.xml for frontend ( you have to do nothing..just drag and drop ) <br> 2. MainActivity.java
+    which handle backend( what action to perform on button click)</p>
+      <img src="img/projStruc.jpg" alt="" style="width: 250px;">
+    <hr>
+    <h3>DVM -</h3>
+    <p>Also known as bicchda hua bhai of JVM.</p>
+    <img src="https://static.javatpoint.com/images/androidimages/flow.jpg" alt="">
+  <hr>
+
+ <h3>Today's Tasks</h3>
+    <p>Make Hello World Application using this video.</p>
+      <a href="https://youtu.be/vde3uaFhxqY">Android Day 1</a>
+    <hr>
+    <h3>Just For Fun</h3>
+    <img src="img/side-l.JPG" alt="" style="width: 400px;">
+    <img src="img/side.JPG" alt="" style="width: 400px;">
+    </div>
+    <div class="col-sm-2 sidenav">
+     
+    </div>
+  </div>
+</div>
+</body>
+</html>

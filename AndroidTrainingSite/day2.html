@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Day 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <style>
+    .sidenav{
+      height: 500vh;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .not{
+      background-color: rgb(247, 247, 247);
+    }
+    code{
+        color: bisque;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid bg-dark text-light">
+  <h1 class="display-4">Android-Notes++</h1>  
+  </div>
+  
+<div class="container-fluid text-center bg-dark text-light">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Android UI</h1>
+      <hr>
+      <h3>Resources</h3>
+      <p><a href="https://drive.google.com/open?id=1pxL5516vgMl2VqJrjOe5dD1luUqtrKKS">Here are Notes for today.</a></p>
+      <hr>
+      <h2>Overview</h2>
+            <p>We will cover UI part of Android and some intro to java code</p><hr>
+      
+            <h3>Android Layout</h3>
+      <p>Defines structure for a user interface in your app,such as in an activity <br>
+         All elements in layout are built using hierarchy of view and view group objects. <br>
+        <b>View : </b> Draws something user can see. <br>
+        <b>ViewGroup :</b> Invisible container that defines layout structure for view. 
+        <br>
+        Read further here : <a href="https://www.coderefer.com/android-layouts-types-android-layouts/">Common Layouts</a>
+      </p>
+    <hr>
+    <h3>Android UI controls</h3>
+    <p> Interactive controls in your app's user interface.</p>
+    <img src="http://www.geeksdemy.com/graymatter/and_ui_control.png" alt="">
+    <hr>
+    <h3>Events </h3>
+    <p>Useful way to collect data about user's interaction with interactive components of application.<br>
+            3 concepts related to events are-</p>
+    <ol><li> <h4>Event Listeners</h4> <p> Which listens to event <br> </li>
+        <li> <h4>Event Listeners Registration</h4> <p>Event Handlers get registerd with event listeners (beech ki kaddi) <br> </li>
+        <li> <h4>Event Handlers</h4> <p>Handles Event. <br>
+    </ol>
+  <hr>
+  <h3>Linking UI components with Java code(i.e make stuff interactive)</h3>
+      <h4>Buttons</h4>
+      <p>Event handling syntax</p>
+      <code>
+          button.setOnClickListener(new View.OnClickListener())  <br>
+          {     <br>
+              @Override <br>
+              public void onClick(View v) <br>
+              { <br>
+              }
+          } <br>
+      </code>
+      <p>Example-> <br> In MainAcivity.java</p> <br>
+      <code>
+        public class MainActivity extends AppCompatActivity { <br>  
+            private Button b;  <br>
+          
+            @Override  <br>
+            protected void onCreate(Bundle savedInstanceState) {  <br>
+                super.onCreate(savedInstanceState);  <br>
+                setContentView(R.layout.activity_main);     //---------> Setting Layout(happens automatically)  <br>
+          
+                func();                //-------------->Made a function  <br>
+            }  <br>
+          
+            public void addListenerOnButton() {     <br>
+                b =  findViewById(R.id.button);              //--------->R.id.button, here button is ID.   <br>
+          
+                b.setOnClickListener(new View.OnClickListener() {  <br>
+                    @Override  <br>
+                    public void onClick(View view) {  <br>
+                        Toast.makeText(getApplicationContext(),"Hello World", Toast.LENGTH_LONG).show();          //----------->Making Toast(Here LENGTH_LONG used to make toast for long duration)  <br>
+                    }  <br>
+                });  <br>
+    </code>
+    
+
+ <h3>Today's Tasks</h3>
+    <p>1.Make Given UI with your modifications</p> 
+    <img src="img/design.png" alt="" style="width: 200px;">
+    <p>2.Make Addition App</p>
+    <img src="img/add (1).png" alt="" style="width: 200px;" >
+    <p>3.Make display your name app</p>
+    <img src="img/display.png" alt="" style="width: 200px;">
+    <hr>
+    </div>
+    <div class="col-sm-2 sidenav">
+     
+    </div>
+  </div>
+</div>
+</body>
+</html>

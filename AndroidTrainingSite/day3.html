@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Day 3</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <style>
+    .sidenav{
+      height: 400vh;
+      background-color: rgb(255, 255, 255);
+    }
+
+    .not{
+      background-color: rgb(247, 247, 247);
+    }
+    code{
+        color: bisque;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid bg-dark text-light">
+  <h1 class="display-4">Android-Notes++</h1>  
+  </div>
+  
+<div class="container-fluid text-center bg-dark text-light">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Android Components Deep Dive</h1>
+      <hr>
+      <h3>1. Making Listview </h3><br>
+        <img src="img/listView.png" alt="" style="width: 200px">
+        <p>Drag and Drop ListView from components.</p>
+      <p>Solution Java File</p>
+      <a href="img/i3.JPG"><img src="img/i3.JPG " alt="" style="width: 400px"></a>
+      <p> <b> Understanding Code </b>  </p>
+      <p>ArrayAdapter binds data in our array to the list. <br>
+    SetOnItemClickListener function is called to take action if item of a list is pressed.</p>
+      <hr>
+      <h3>2. Making Vibration and Controlling phone volume  </h3> <br>
+      <p>
+        Drag and Drop ToggleButton,Switch and RatingBar in your window <br>
+    ToggleButton to control phone volume <br>
+    Switch to make phone Vibrate <br>
+        RatingBar to display rating in toast</p>
+          <img src="img/vibrate.png" alt="" style="width: 200px">
+          <p>Solution Java File</p>
+
+          <a href="img/i1.JPG"><img src="img/i1.JPG" alt="" style="width: 400px"> </a>
+          <a href="img/i2.JPG"><img src="img/i2.JPG" alt="" style="width: 400px"> </a>
+
+          <p> <b> Understanding Code </b>  </p>
+          <p>setOnCheckedChangeListener() function called for togglebutton and switch  <br>
+              In  onCheckedChanged(CompoundButton buttonView , boolean isChecked) we define what to do when button(or switch) is clicked. <br>
+             In switch(buttonView.getId()) ,we get Id of whatever was clicked Togglebutton or switch. <br>
+             1st case is for toggle button and 2nd for switch. <br>
+             AudioManager and Vibrator classes have services(i.e ,vibrating)
+            </p>
+          <hr>
+        </div>
+          <div class="col-sm-2 sidenav">
+     
+    </div>
+  
+</div>
+</body>
+</html>
